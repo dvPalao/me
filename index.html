@@ -11,6 +11,7 @@
 
   <head>
     <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="wepicon.png">
   <link rel="dns-prefetch" href="https://github.githubassets.com">
   <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
   <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
@@ -75,99 +76,76 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/home-5523b374aaa9.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_webgl-globe_dist_js_main_js-cf5f119d1214.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/webgl-globe-d3e3295f0ac2.js"></script>
+      <!-- Reproductor de YouTube con API -->
+      <div id="player"></div>
+
+      <!-- Barra de volumen -->
+      <div id="volume-bar" onclick="adjustVolume(event)">
+          <div id="volume-fill"></div>
+      </div>
   
-    <!-- Reproductor de YouTube con API -->
-    <div id="player"></div>
-
-    <!-- Barra de volumen -->
-    <div id="volume-bar" onclick="adjustVolume(event)">
-        <div id="volume-fill"></div>
-    </div>
-
-    <!-- Botón para mostrar/ocultar el reproductor -->
-    <button class="toggle-button" onclick="togglePlayer()">
-        <i class="fas fa-arrow-down"></i>
-    </button>
-
-    <!-- JavaScript para cargar el reproductor de YouTube -->
-    <script>
-        // Función para comenzar Palao
-        function startPalao() {
-            // Ocultar la pantalla de introducción
-            document.getElementById('intro-screen').style.display = 'none';
-            
-            // Iniciar el reproductor de YouTube
-            loadYouTubePlayer();
-        }
-
-        // Función para ocultar o mostrar el reproductor de video
-        function togglePlayer() {
-            var player = document.getElementById('player');
-            var buttonIcon = document.querySelector('.toggle-button i');
-
-            if (player.style.display === 'none') {
-                player.style.display = 'block'; // Mostrar el reproductor
-                buttonIcon.classList.remove('fa-arrow-down');
-                buttonIcon.classList.add('fa-arrow-up');
-            } else {
-                player.style.display = 'none'; // Ocultar el reproductor
-                buttonIcon.classList.remove('fa-arrow-up');
-                buttonIcon.classList.add('fa-arrow-down');
-            }
-        }
-
-        // Función para ajustar el volumen
-        function adjustVolume(event) {
-            var volumeBar = document.getElementById('volume-bar');
-            var volumeFill = document.getElementById('volume-fill');
-            var volumeLevel = (event.clientX - volumeBar.getBoundingClientRect().left) / volumeBar.offsetWidth;
-            volumeFill.style.width = (volumeLevel * 100) + '%';
-            var player = document.getElementById('player');
-            player.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[' + (volumeLevel * 100) + ']}', '*');
-        }
-
-        // Carga el reproductor de YouTube
-        function loadYouTubePlayer() {
-            var tag = document.createElement('script');
-            tag.src = 'https://www.youtube.com/iframe_api';
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        }
-
-        // Reproduce el video cuando el reproductor esté listo
-        function onYouTubeIframeAPIReady() {
-            var player;
-            player = new YT.Player('player', {
-                height: '200', // Reducir la altura del reproductor
-                width: '300', // Reducir el ancho del reproductor
-                playerVars: {
-                    'listType': 'playlist',
-                    'list': 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N', // Reemplaza 'PLbpi6ZahtOH6v_xI7mfv6rSxYifOY2hdt' con el ID de tu lista de reproducción
-                    'autoplay': 1, // Reproducción automática
-                    'controls': 0, // Oculta los controles del reproductor
-                    'loop': 1, // Repetición del video
-                    'mute': 0, // Deshabilitar el silencio
-                    'volume': 50 // Establecer el volumen inicial en 50%
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        // Reproduce el video cuando el reproductor esté listo
-        function onPlayerReady(event) {
-            event.target.playVideo();
-            document.getElementById('player').style.display = 'none'; // Mostrar el reproductor después de que esté listo
-        }
-
-        // Cargar el reproductor cuando se cargue la página
-        document.addEventListener('DOMContentLoaded', function() {
-            // Iniciar el reproductor de YouTube automáticamente después de que el usuario haya interactuado con la página
-            document.getElementById('intro-screen').addEventListener('click', startPalao);
-        });
-    </script>
-</body>
+      <!-- JavaScript para cargar el reproductor de YouTube -->
+      <script>
+          // Función para comenzar Palao
+          function startPalao() {
+              // Ocultar la pantalla de introducción
+              document.getElementById('intro-screen').style.display = 'none';
+              
+              // Iniciar el reproductor de YouTube
+              loadYouTubePlayer();
+          }
+  
+          // Función para ajustar el volumen
+          function adjustVolume(event) {
+              var volumeBar = document.getElementById('volume-bar');
+              var volumeFill = document.getElementById('volume-fill');
+              var volumeLevel = (event.clientX - volumeBar.getBoundingClientRect().left) / volumeBar.offsetWidth;
+              volumeFill.style.width = (volumeLevel * 100) + '%';
+              var player = document.getElementById('player');
+              player.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[' + (volumeLevel * 100) + ']}', '*');
+          }
+  
+          // Carga el reproductor de YouTube
+          function loadYouTubePlayer() {
+              var tag = document.createElement('script');
+              tag.src = 'https://www.youtube.com/iframe_api';
+              var firstScriptTag = document.getElementsByTagName('script')[0];
+              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+          }
+  
+          // Reproduce el video cuando el reproductor esté listo
+          function onYouTubeIframeAPIReady() {
+              var player;
+              player = new YT.Player('player', {
+                  height: '200', // Reducir la altura del reproductor
+                  width: '300', // Reducir el ancho del reproductor
+                  playerVars: {
+                      'listType': 'playlist',
+                      'list': 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N', // Reemplaza 'PLbpi6ZahtOH6v_xI7mfv6rSxYifOY2hdt' con el ID de tu lista de reproducción
+                      'autoplay': 1, // Reproducción automática
+                      'controls': 0, // Oculta los controles del reproductor
+                      'loop': 1, // Repetición del video
+                      'mute': 0, // Deshabilitar el silencio
+                      'volume': 50 // Establecer el volumen inicial en 50%
+                  },
+                  events: {
+                      'onReady': onPlayerReady
+                  }
+              });
+          }
+  
+          // Reproduce el video cuando el reproductor esté listo
+          function onPlayerReady(event) {
+              event.target.playVideo();
+              document.getElementById('player').style.display = 'none'; // Mostrarel reproductor después de que esté listo
+          }
+  
+          // Cargar el reproductor cuando se cargue la página
+          document.addEventListener('DOMContentLoaded', function() {
+              // Iniciar el reproductor de YouTube automáticamente después de que el usuario haya interactuado con la página
+              document.getElementById('intro-screen').addEventListener('click', startPalao);
+          });
+      </script>
 
 <style>
 
@@ -453,4 +431,7 @@
   <source srcset="wepicon.png  1208w,wepicon.png  604w,wepicon.png  483w,wepicon.png  302w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 604px" type="image/png"></source>
   <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1208" height="804" loading="lazy" decoding="async" alt="" aria-hidden="true" src="wepicon.png " />
 </picture></div>
+      
+
 </html>
+
