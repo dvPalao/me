@@ -78,20 +78,17 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/home-5523b374aaa9.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_webgl-globe_dist_js_main_js-cf5f119d1214.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/webgl-globe-d3e3295f0ac2.js"></script>
-
+    
 <style>
   ::-webkit-scrollbar {
-    display: none; /* Oculta la barra de desplazamiento en navegadores webkit como Chrome y Safari */
+    display: none; 
   }
-
   body {
-    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
-    -ms-overflow-style: none; /* Oculta la barra de desplazamiento en Internet Explorer y Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
   }
 </style>
-
 <style>
-  /* Estilo de la barra de volumen */
   #volume-bar {
       position: fixed;
       top: 20px;
@@ -102,37 +99,23 @@
       border-radius: 2.5px;
       cursor: pointer;
   }
-
   #volume-fill {
       height: 100%;
       background-color: #4CAF50;
       border-radius: 2.5px;
-      width: 100%; /* Inicialmente llena toda la barra */
-      transition: width 0.2s; /* Transición suave al cambiar el volumen */
+      width: 100%; 
+      transition: width 0.2s; 
   }
 </style>
-
-<!-- Reproductor de YouTube con API -->
       <div id="player"></div>
-      
-
-      <!-- Barra de volumen -->
       <div id="volume-bar" onclick="adjustVolume(event)">
           <div id="volume-fill"></div>
       </div>
-  
-      <!-- JavaScript para cargar el reproductor de YouTube -->
-      <script>
-          // Función para comenzar Palao
+        <script>
           function startPalao() {
-              // Ocultar la pantalla de introducción
               document.getElementById('intro-screen').style.display = 'none';
-              
-              // Iniciar el reproductor de YouTube
               loadYouTubePlayer();
           }
-  
-          // Función para ajustar el volumen
           function adjustVolume(event) {
               var volumeBar = document.getElementById('volume-bar');
               var volumeFill = document.getElementById('volume-fill');
@@ -141,54 +124,41 @@
               var player = document.getElementById('player');
               player.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[' + (volumeLevel * 100) + ']}', '*');
           }
-  
-          // Carga el reproductor de YouTube
-          function loadYouTubePlayer() {
+            function loadYouTubePlayer() {
               var tag = document.createElement('script');
               tag.src = 'https://www.youtube.com/iframe_api';
               var firstScriptTag = document.getElementsByTagName('script')[0];
               firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
           }
-  
-          // Reproduce el video cuando el reproductor esté listo
-          function onYouTubeIframeAPIReady() {
+            function onYouTubeIframeAPIReady() {
               var player;
               player = new YT.Player('player', {
-                  height: '200', // Reducir la altura del reproductor
-                  width: '300', // Reducir el ancho del reproductor
+                  height: '200', 
+                  width: '300', 
                   playerVars: {
                       'listType': 'playlist',
-                      'list': 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N', // Reemplaza 'PLbpi6ZahtOH6v_xI7mfv6rSxYifOY2hdt' con el ID de tu lista de reproducción
-                      'autoplay': 1, // Reproducción automática
-                      'controls': 0, // Oculta los controles del reproductor
-                      'loop': 1, // Repetición del video
-                      'mute': 0, // Deshabilitar el silencio
-                      'volume': 50 // Establecer el volumen inicial en 50%
+                      'list': 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N', 
+                      'autoplay': 1, 
+                      'controls': 0, 
+                      'loop': 1, 
+                      'mute': 0, 
+                      'volume': 50 
                   },
                   events: {
                       'onReady': onPlayerReady
                   }
               });
           }
-  
-          // Reproduce el video cuando el reproductor esté listo
-          function onPlayerReady(event) {
+            function onPlayerReady(event) {
               event.target.playVideo();
-              document.getElementById('player').style.display = 'none'; // Mostrarel reproductor después de que esté listo
+              document.getElementById('player').style.display = 'none'; 
           }
-  
-          // Cargar el reproductor cuando se cargue la página
           document.addEventListener('DOMContentLoaded', function() {
-              // Iniciar el reproductor de YouTube automáticamente después de que el usuario haya interactuado con la página
               document.getElementById('intro-screen').addEventListener('click', startPalao);
-            // Iniciar el reproductor de YouTube automáticamente en dispositivos móviles al tocar la pantalla
             document.body.addEventListener('touchstart', startPalao);
           });
       </script>
-
 <style>
-
-    /* Estilos de la pantalla de introducción */
     #intro-screen {
         position: fixed;
         top: 0;
@@ -230,18 +200,15 @@
 </style>
 
 <body>
-    <!-- Pantalla de introducción -->
     <div id="intro-screen" style="animation: fadein 2s;">
         <button id="myButton" onclick="startPalao()" style="background-color: #00000000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">INSERT COIN</button>
     </div>
-
     <script>
         var button = document.getElementById('myButton');
         var texts = ['    𝓘𝓝𝓢𝓔𝓡𝓣 𝓒𝓞𝓘𝓝    ', '    𝓑𝓐𝓑🐻    ', '    𝓟𝓤𝓢𝓗 𝓢𝓣𝓐𝓡𝓣    ', '    𝓣𝓤 𝓥𝓘𝓔𝓙𝓐    '];
         var index = 0;
         var counter = texts[index].length;
         var intervalId;
-
         function deleteText() {
             if (counter >= 0) {
                 button.innerHTML = texts[index].slice(0, counter);
@@ -250,10 +217,8 @@
                 clearInterval(intervalId);
                 index = (index + 1) % texts.length;
                 counter = 0;
-                intervalId = setInterval(addText, 100); // Añade una letra cada 100 milisegundos
-            }
+                intervalId = setInterval(addText, 100);
         }
-
         function addText() {
             if (counter < texts[index].length) {
                 button.innerHTML += texts[index][counter];
@@ -261,49 +226,27 @@
             } else {
                 clearInterval(intervalId);
                 counter = texts[index].length;
-                intervalId = setInterval(deleteText, 100); // Borra una letra cada 100 milisegundos
+                intervalId = setInterval(deleteText, 100); 
             }
         }
-
-        intervalId = setInterval(deleteText, 100); // Borra una letra cada 100 milisegundos
+        intervalId = setInterval(deleteText, 100); 
     </script>
-
     <style>
     @keyframes fadein {
         from { opacity: 5; }
         to   { opacity: 5; }
     }
     </style>
-
-    <!-- JavaScript para cargar el reproductor de YouTube -->
     <script>
-        // Función para comenzar Palao
         function startPalao() {
-            // Ocultar la pantalla de introducción
             document.getElementById('intro-screen').style.display = 'none';
-            
-            // Iniciar el reproductor de YouTube
             loadYouTubePlayer();
         }
-
-
-
-
-
-
     </script>
 </body>
-
 </a>
-        </div>
-    </div>
-</div>
-</div>
-
-
   <div class="home-campaign-productivity js-section overflow-hidden px-3 pb-8 pt-5" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark" id="productivity">
   <div class="container-xl">
-    
   <div class="d-flex js-build-in-trigger position-relative" data-build-in-stagger="100" data-build-margin-bottom="20">
     <div class="col-1 d-flex flex-column flex-items-center">
       <div class="mb-4 position-relative home-campaign-glowing-icon">
@@ -313,7 +256,6 @@
       </div>
       <div class="home-campaign-git-line height-full rounded js-build-in-item build-in-scale-top" style="background: linear-gradient(hsl(231, 100%, 77%), #2c88eb, transparent);" data-build-delay="500"></div>
     </div>
-
     <div class="col-11 col-lg-8 ml-2 ml-md-0 mb-6 mb-md-10">
       <h2 class="h5-mktg mb-4 text-medium"></h2>
       <h3 class="h3-mktg mb-4 text-medium">
@@ -321,58 +263,40 @@
         P A L A O 
       </h3>
     </div>
-
     <img alt="" aria-hidden="true" width="626" height="626" class="position-absolute height-auto d-none d-md-block col-6 events-none home-shape-rotate" style="top: 0; right: -25%;" loading="lazy" decoding="async" src="https://github.githubassets.com/assets/shape-0-df97fa6b0c27.svg" />
   </div>
-
   <div class="js-build-in-trigger">
     <img alt="" aria-hidden="true" width="2496" height="1302" class="width-full d-block height-auto position-relative z-1 rounded-3 border js-build-in-item build-in-slideX-right" loading="lazy" decoding="async" src="tumblracross.gif" />
   </div>
-
   <div class="d-flex js-build-in-trigger position-relative" data-build-in-stagger="100">
     <img alt="" aria-hidden="true" width="584" height="584" class="position-absolute height-auto d-none d-md-block col-7 events-none home-shape-rotate" style="bottom: -50%; right: -20%; animation-duration: 300s;" loading="lazy" decoding="async" src="https://github.githubassets.com/assets/shape-1-c219318e479a.svg" />
-
     <div class="col-1 d-flex flex-column flex-items-center position-relative">
       <div class="home-campaign-git-line height-full position-relative z-1 js-build-in-item build-in-scale-top" style="transition-duration: 900ms; background: linear-gradient(hsl(231, 100%, 77%), #2c88eb, transparent);"></div>
     </div>
-
     <div class="col-11 ml-2 ml-md-6">
         <div class="river-mktg js-build-in-trigger d-flex gutter gutter-spacious my-5 my-sm-7 my-md-8 position-relative flex-column-reverse flex-md-items-center flex-md-row flex-column pb-4 pb-md-7" data-build-in-stagger="100">
     <div class="col-12 py-3 mb-2 js-build-in-item col-sm-10 col-md-6 text-left col-lg-6 build-in-slideX-right">
       <div class="pr-md-4">
-        
-        
-        
-        
         <h2 class="color-fg-default mb-3 f2-mktg color-fg-muted"><em> yo P A L A O para ti oe  </em>  🔜sonazo, 🐚tu🤱, a🐟t🐻, sarn🐻, 🥚nazo, bab🐻, π👁so, m🍄🎀, 🐟uñento,©️™️®️, retar🎲,color 🟫. 🔙an te crees? Pobre fra🏡do eres un 0️⃣ a la izquierda ✖ eso los feno➖ de tus 👨‍👩‍👧‍👦 no te prestan atencion, 🧲tenido para colmo. 🔑s que ni tus 👨‍👩‍👧‍👦 te quieren. Eres un 👶 de 🐩, vete al car🧄. No das risa 🐐lo 🥚n, a tu 🤱 me la voy a k🪓r 5️⃣ndon para que 💯ta mi 🐀 en su 🐚 ko🇨🇳 la voy poner en 4️⃣ y por el *️⃣, mas 🥚 le voy a dar como nadie se lo ha 🎲 </h2>
-        
           <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="/features/copilot" data-analytics-event="{&quot;category&quot;:&quot;Explore GitHub Copilot&quot;,&quot;action&quot;:&quot;click to Explore GitHub Copilot&quot;,&quot;label&quot;:&quot;ref_cta:Explore GitHub Copilot;&quot;}">
 </a>
-        
       </div>
     </div>
-
       <div class="col-12 py-3 col-md-6 col-lg-6">
         <div class="position-relative">
-          
         <div class="d-flex flex-column position-relative">
           <div class="js-build-in-item build-in-slideX-right overflow-hidden rounded-3 position-relative z-1 d-none d-md-block" style="max-width: 480px; margin-top: -100%">
           </div>
-
           <div class="js-build-in-item build-in-slideX-right overflow-hidden rounded-3 position-absolute right-3 bottom-3 bottom-sm-0 z-1 d-md-none" style="max-width: 60%;">
           </div>
                 </div>
-
         </div>
       </div>
         <div class="position-relative">
-          
         <div class="d-flex flex-column position-relative">
           <div class="js-build-in-item build-in-slideX-right border overflow-hidden rounded-2 position-relative left-6 z-1" style="max-width: 541px; margin-top: -30%">
           </div>
-
         </div>
-
         </div>
       </div>
 </div>
@@ -384,42 +308,32 @@
       </div>
     </div>
   </div>
-
   <div class="position-relative z-1 js-build-in-trigger">
       <card-skew class="overflow-hidden rounded-3 mb-3 mb-md-5">
     <div class="feature-card-mktg d-md-flex rounded-3 color-bg-subtle border position-relative flex-justify-between z-1 height-full flex-row" data-target="card-skew.bounding">
       <div class="d-md-flex flex-column flex-1 p-5 p-sm-6 py-lg-8 pl-lg-8 pr-lg-12 col-md-6 flex-justify-between">
         <p class="f2-mktg text-medium color-fg-muted mb-4"><em> PALAO </em>
-            <p> test test test test test test test</p>
-
+            <p> A la firme si no viste este video no me caes en lo absoluto </p>
         <div>  <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="https://discord.com/users/754554380581208094" data-analytics-event="{&quot;category&quot;:&quot;Download the latest SAST ebook&quot;,&quot;action&quot;:&quot;click to Download the latest SAST ebook&quot;,&quot;label&quot;:&quot;ref_cta:Download the latest SAST ebook;&quot;}">
     Profile <svg xmlns="https://discord.com/users/754554380581208094" class="octicon arrow-symbol-mktg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"></path><path class="octicon-chevrow-stem" stroke="currentColor" d="M1.75 8H11" stroke-width="1.5" stroke-linecap="round"></path></svg>
-
 </a></div>
 </div>
-      <div class="overflow-hidden col-md-6 rounded-right-3"><picture>
-  <source srcset="wepicon.png 1288w,wepicon.png  1030w,wepicon.png  772w,wepicon.png  644w,wepicon.png  515w, wepicon.png  257w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 644px" type="image/webp"></source>
-  <source srcset="wepicon.png  1288w,wepicon.png  644w,wepicon.png 515w, wepicon.png 322w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 644px" type="image/png"></source>
-  <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1288" height="992" loading="lazy" decoding="async" alt="" aria-hidden="true" src="wepicon.png" />
-</picture>
+      <div class="overflow-hidden col-md-6 rounded-right-3"><source>
+  <source srcset="machape.gif 1288w,machape.gif  1030w,machape.gif  772w,machape.gif  644w,machape.gif 515w, machape.gif  257w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 644px" type="image/webp"></source>
+  <source srcset="machape.gif  1288w,machape.gif  644w,machape.gif 515w, machape.gif 322w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 644px" type="image/png"></source>
+  <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1288" height="992" loading="lazy" decoding="async" alt="" aria-hidden="true" src="machape.gif" />
+</source>
 </div>
-      
-
       <div data-target="card-skew.shine" class="position-absolute bottom-0 right-0 events-none z-n1"></div>
 </div>  </card-skew>
-
   </div>
-
   <div class="d-flex flex-column flex-md-row gutter js-build-in-trigger " >
-  
     <div class="col-md-6 d-flex">
         <card-skew class="overflow-hidden rounded-3 mb-3 mb-md-5">
     <div class="feature-card-mktg d-md-flex rounded-3 color-bg-subtle border position-relative flex-justify-between z-1 height-full flex-column" data-target="card-skew.bounding">
       <div class="d-md-flex flex-column flex-1 p-5 p-sm-6 py-lg-8 pl-lg-8 pr-lg-12 flex-justify-start">
         <p class="f2-mktg text-medium color-fg-muted mb-4"><em>XD</em> A la firme el html es muy largo y me da pereza</p>
-
         <div>  <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="/features/security/software-supply-chain" data-analytics-event="{&quot;category&quot;:&quot;Explore Dependabot&quot;,&quot;action&quot;:&quot;click to Explore Dependabot&quot;,&quot;label&quot;:&quot;ref_cta:Explore Dependabot;&quot;}">
-
 </a></div>
 </div>
       <div class="overflow-hidden rounded-bottom-3"><picture>
@@ -427,19 +341,14 @@
   <source srcset="wepicon.png  1208w,wepicon.png  604w,wepicon.png  483w,wepicon.png  302w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 604px" type="image/png"></source>
   <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1208" height="764" loading="lazy" decoding="async" alt="" aria-hidden="true" src="wepicon.png " />
 </picture></div>
-      
-
       <div data-target="card-skew.shine" class="position-absolute bottom-0 right-0 events-none z-n1"></div>
 </div>  </card-skew>
-
     </div>
-
     <div class="col-md-6 d-flex">
         <card-skew class="overflow-hidden rounded-3 mb-3 mb-md-5">
     <div class="feature-card-mktg d-md-flex rounded-3 color-bg-subtle border position-relative flex-justify-between z-1 height-full flex-column" data-target="card-skew.bounding">
       <div class="d-md-flex flex-column flex-1 p-5 p-sm-6 py-lg-8 pl-lg-8 pr-lg-12 flex-justify-start">
         <p class="f2-mktg text-medium color-fg-muted mb-4"><em>en los proximos dias aun </em> pppppppppppppppppppppppppppppppppppppp </p>
-
         <div>  <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="/features/security/code" data-analytics-event="{&quot;category&quot;:&quot;Read about secret scanning&quot;,&quot;action&quot;:&quot;click to Read about secret scanning&quot;,&quot;label&quot;:&quot;ref_cta:Read about secret scanning;&quot;}">
 </a></div>
 </div>
