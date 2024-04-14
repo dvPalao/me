@@ -1,131 +1,461 @@
-const profilLogo = document.querySelectorAll(".profil-logo");
-const roleAdd = document.querySelectorAll(".role-add");
-const input = document.querySelectorAll(".message input");
-const modal = document.querySelector(".modal-container");
-const helpBtn = document.querySelector(".help-btn");
-const feedbackInput = document.querySelector("#feedback-input");
-const discordButton = document.getElementById('discord-button');
-const nitroCard = document.getElementById('nitro-card');
+<!DOCTYPE html>
+<html
+  lang="en"
+  
+  data-color-mode="light" data-light-theme="light" data-dark-theme="dark"
+  data-a11y-animated-images="system" data-a11y-link-underlines="true"
+  >
 
-const randomHexColor = () => {
-  return "#" + Math.floor(Math.random() * 16777215).toString(16);
-};
+  <title>Palao</title>
+  <link rel="icon" type="image/png" href="wepicon.png">
 
-// Crea un nuevo elemento de script y configura su src para que apunte al reproductor de YouTube
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// Inicializa el reproductor de YouTube al cargar la página
-function onYouTubeIframeAPIReady() {
-  const player = new YT.Player('player', {
-    height: '390',
-    width: '640',
-    videoId: 'TU LISTA DE REPRODUCCIÓN',
-    playerVars: {
-      autoplay: 1, // Habilita la reproducción automática
-      loop: 1, // Habilita la reproducción en bucle
-      playlist: 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N'
-    },
-    events: {
-      onReady: onPlayerReady
-    }
-  });
-}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="wepicon.png">
+  <link rel="dns-prefetch" href="https://github.githubassets.com">
+  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+  <link rel="preconnect" href="https://github.githubassets.com" crossorigin>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com">
 
-// Función que se llama cuando el reproductor de YouTube está listo
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
+  
 
-const ramdomWord = () => {
-  const words = [
-    "Awesome",
-    "Cool",
-    "Great",
-    "Nice",
-    "Super",
-    "Superb",
-    "Superior",
-    "Wonderful",
-    "Amazing",
-    "Fantastic",
-    "Fabulous",
-    "Incredible",
-    "Marvelous",
-    "Spectacular",
-    "Stupendous",
-    "Terrific",
-    "Astounding",
-  ];
-  return words[Math.floor(Math.random() * words.length)];
-};
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/light-f13f84a2af0d.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark-1ee85695b584.css" /><link data-color-theme="light" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light-f13f84a2af0d.css" /><link data-color-theme="dark" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark-1ee85695b584.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-8c42799cfb52.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-dc99d916bf90.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-0a83868d0e43.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-3c798f5a8bef.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-4c72a7f3b765.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-222bf22536c7.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-c1d9496197fa.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-primitives-0b5bee5c70e9.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-44fa1513ddd0.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-af1512ed1e5e.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/github-07f750db5d7c.css" />
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dashboard-eff640980650.css" />
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/discussions-4a9715cdd9f3.css" />
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/site-059d3213fd4f.css" />
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/home-993d2c38b2c1.css" />
 
-const addRole = (card) => {
-  const role = document.createElement("div");
-  const roleColor = document.createElement("div");
-  const roleText = document.createElement("p");
-  role.classList.add("role");
-  roleColor.classList.add("role-color");
-  roleColor.style.backgroundColor = randomHexColor();
-  roleText.innerText = ramdomWord();
-  role.append(roleColor, roleText);
-  card.parentElement.append(role, card);
-  removeRole();
-};
+  
 
-const removeRole = () => {
-  const roles = document.querySelectorAll(".role-color");
-  roles.forEach((role) => {
-    role.addEventListener("click", (e) => {
-      e.target.parentElement.remove();
-    });
-  });
-};
 
-const toggleModal = () => {
-  modal.classList.toggle("active");
-};
+  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["code_vulnerability_scanning","copilot_conversational_ux_history_refs","copilot_smell_icebreaker_ux","copilot_implicit_context","failbot_handle_non_errors","geojson_azure_maps","image_metric_tracking","marketing_forms_api_integration_contact_request","marketing_pages_search_explore_provider","turbo_experiment_risky","sample_network_conn_type","no_character_key_shortcuts_in_inputs","react_start_transition_for_navigations","custom_inp","remove_child_patch"]}</script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-45ddb02d1eda.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_dompurify_dist_purify_js-6890e890956f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_oddbird_popover-polyfill_dist_popover_js-7bd350d761f4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_smoothscroll-polyfill_dist_smoothscroll_js-node_modules_stacktrace-parse-a448e4-bb5415637fe0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/environment-d2c4d643d9fb.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_selector-observer_dist_index_esm_js-9f960d9b217c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_focus-zone_js-086f7a27bac0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_relative-time-element_dist_index_js-c76945c5961a.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_combobox-nav_dist_index_js-node_modules_github_markdown-toolbar-e-820fc0-bc8f02b96749.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_auto-complete-element_dist_index_js-03fc21f4e80c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_text-expander-element_dist_index_js-8a621df59e80.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_stacktrace-parser_dist_stack-443cd5-1ba4dbac454f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_filter-input-element_dist_index_js-node_modules_github_remote-inp-b7d8f4-7dc906febe69.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_primer_view-co-27181b-3509ed8075c4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_onfocus_ts-ui_packages_trusted-types-policies_policy_ts-ui_packages-6fe316-30edc9da471c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/github-elements-34cbf079a4f4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/element-registry-8a1f7e4b0d25.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_catalyst_lib_index_js-node_modules_github_hydro-analytics-client_-4da1df-9de8d527f925.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_index_js-node_modules_stacktrace-parser_dist_s-1acb1c-a745699a1cfa.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_lit-html_lit-html_js-5b376145beff.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_morphdom_dist_morphdom-esm_js-node_modules_github_memoize_dist_esm_index_js-05801f7ca718.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_turbo_dist_turbo_es2017-esm_js-c91f4ad18b62.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_remote-form_dist_index_js-node_modules_delegated-events_dist_inde-893f9f-a8ec7ed862cf.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_scroll-anchoring_dist_scroll-anchoring_esm_js-node_modules_github_detail-c9d0ba-387cde917623.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_color-convert_index_js-72c9fbde5ad4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_dimensions_js-node_modules_github_jtml_lib_index_js-95b84ee6bc34.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_quote-selection_dist_index_js-node_modules_github_session-resume_-84957b-7b4e472db160.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_alive_alive_ts-b956d50b9283.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_updatable-content_ts-ui_packages_hydro-analytics_hydro-analytics_ts-82813f-ebd80a289a23.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_task-list_ts-app_assets_modules_github_onfocus_ts-app_ass-421cec-9de4213015af.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_sticky-scroll-into-view_ts-94209c43e6af.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_ajax-error_ts-app_assets_modules_github_behaviors_include-2e2258-05fd80a7ea89.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_commenting_edit_ts-app_assets_modules_github_behaviors_ht-83c235-9285faa0e011.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/behaviors-ac005b67b8cf.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_catalyst_lib_index_js-06ff531-2ea61fcc9a71.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/notifications-global-6d6db5144cc3.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_stacktrace-parser_dist_stack-8189f0-59690e27a70d.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/marketing-a918461dd310.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/home-5523b374aaa9.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_webgl-globe_dist_js_main_js-cf5f119d1214.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/webgl-globe-d3e3295f0ac2.js"></script>
 
-profilLogo.forEach((logo) => {
-  logo.addEventListener("click", toggleModal);
-});
-
-roleAdd.forEach((add) => {
-  add.addEventListener("click", () => {
-    addRole(add);
-  });
-});
-
-input.forEach((input) => {
-  input.addEventListener("keyup", (e) => {
-    if (e.key === "Enter") {
-      input.value = "";
-      input.blur();
-      toggleModal();
-    }
-  });
-});
-
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    toggleModal();
+<style>
+  ::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores webkit como Chrome y Safari */
   }
-});
 
-helpBtn.addEventListener("click", () => {
-  toggleModal();
-});
-
-feedbackInput.addEventListener("keyup", (e) => {
-  const feedbackState = document.querySelector(".feedback-state");
-  if (e.key === "Enter") {
-    feedbackInput.blur();
-    // Api wiil be add soon for a complete feedback system for me ( more big project will be add soon on my github, that's why would be nice to have a feedback system ) :)
-    feedbackState.classList.add("error");
-    feedbackState.innerText = "Api is not available for the moment, try later.";
+  body {
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+    -ms-overflow-style: none; /* Oculta la barra de desplazamiento en Internet Explorer y Edge */
   }
-});
+</style>
 
-removeRole();
+<style>
+  /* Estilo de la barra de volumen */
+  #volume-bar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: 5px;
+      background-color: #d3d3d3;
+      border-radius: 2.5px;
+      cursor: pointer;
+  }
+
+  #volume-fill {
+      height: 100%;
+      background-color: #4CAF50;
+      border-radius: 2.5px;
+      width: 100%; /* Inicialmente llena toda la barra */
+      transition: width 0.2s; /* Transición suave al cambiar el volumen */
+  }
+</style>
+
+<!-- Reproductor de YouTube con API -->
+      <div id="player-container" style="width: 0; height: 0; display: none;"></div>
+
+
+      <!-- Barra de volumen -->
+      <div id="volume-bar" onclick="adjustVolume(event)">
+          <div id="volume-fill"></div>
+      </div>
+  
+      <!-- JavaScript para cargar el reproductor de YouTube -->
+      <script>
+          // Función para comenzar Palao
+          function startPalao() {
+              // Ocultar la pantalla de introducción
+              document.getElementById('intro-screen').style.display = 'none';
+              
+              // Iniciar el reproductor de YouTube
+              loadYouTubePlayer();
+          }
+  
+          // Función para ajustar el volumen
+          function adjustVolume(event) {
+              var volumeBar = document.getElementById('volume-bar');
+              var volumeFill = document.getElementById('volume-fill');
+              var volumeLevel = (event.clientX - volumeBar.getBoundingClientRect().left) / volumeBar.offsetWidth;
+              volumeFill.style.width = (volumeLevel * 100) + '%';
+              var player = document.getElementById('player');
+              player.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[' + (volumeLevel * 100) + ']}', '*');
+          }
+  
+          // Carga el reproductor de YouTube
+          function loadYouTubePlayer() {
+              var tag = document.createElement('script');
+              tag.src = 'https://www.youtube.com/iframe_api';
+              var firstScriptTag = document.getElementsByTagName('script')[0];
+              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+          }
+  
+          // Reproduce el video cuando el reproductor esté listo
+          function onYouTubeIframeAPIReady() {
+              var player;
+              player = new YT.Player('player', {
+                  height: '200', // Reducir la altura del reproductor
+                  width: '300', // Reducir el ancho del reproductor
+                  playerVars: {
+                      'listType': 'playlist',
+                      'list': 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N', // Reemplaza 'PLbpi6ZahtOH6v_xI7mfv6rSxYifOY2hdt' con el ID de tu lista de reproducción
+                      'autoplay': 1, // Reproducción automática
+                      'controls': 0, // Oculta los controles del reproductor
+                      'loop': 1, // Repetición del video
+                      'mute': 0, // Deshabilitar el silencio
+                      'volume': 50 // Establecer el volumen inicial en 50%
+                  },
+                  events: {
+                      'onReady': onPlayerReady
+                  }
+              });
+          }
+  
+          // Reproduce el video cuando el reproductor esté listo
+          function onPlayerReady(event) {
+              event.target.playVideo();
+              document.getElementById('player').style.display = 'none'; // Mostrarel reproductor después de que esté listo
+          }
+  
+          // Cargar el reproductor cuando se cargue la página
+          document.addEventListener('DOMContentLoaded', function() {
+              // Iniciar el reproductor de YouTube automáticamente después de que el usuario haya interactuado con la página
+              document.getElementById('intro-screen').addEventListener('click', startPalao);
+            // Iniciar el reproductor de YouTube automáticamente en dispositivos móviles al tocar la pantalla
+            document.body.addEventListener('touchstart', startPalao);
+          });
+      </script>
+
+<style>
+
+    /* Estilos de la pantalla de introducción */
+    #intro-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 9999;
+    }
+
+    #intro-screen h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    #intro-screen p {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    #intro-screen button {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #intro-screen button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<body>
+    <!-- Pantalla de introducción -->
+    <div id="intro-screen" style="animation: fadein 2s;">
+        <button id="myButton" onclick="startPalao()" style="background-color: #00000000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">INSERT COIN</button>
+    </div>
+
+    <script>
+        var button = document.getElementById('myButton');
+        var texts = ['    𝓘𝓝𝓢𝓔𝓡𝓣 𝓒𝓞𝓘𝓝    ', '    𝓑𝓐𝓑🐻    ', '    𝓟𝓤𝓢𝓗 𝓢𝓣𝓐𝓡𝓣    ', '    𝓣𝓤 𝓥𝓘𝓔𝓙𝓐    '];
+        var index = 0;
+        var counter = texts[index].length;
+        var intervalId;
+
+        function deleteText() {
+            if (counter >= 0) {
+                button.innerHTML = texts[index].slice(0, counter);
+                counter--;
+            } else {
+                clearInterval(intervalId);
+                index = (index + 1) % texts.length;
+                counter = 0;
+                intervalId = setInterval(addText, 100); // Añade una letra cada 100 milisegundos
+            }
+        }
+
+        function addText() {
+            if (counter < texts[index].length) {
+                button.innerHTML += texts[index][counter];
+                counter++;
+            } else {
+                clearInterval(intervalId);
+                counter = texts[index].length;
+                intervalId = setInterval(deleteText, 100); // Borra una letra cada 100 milisegundos
+            }
+        }
+
+        intervalId = setInterval(deleteText, 100); // Borra una letra cada 100 milisegundos
+    </script>
+
+    <style>
+    @keyframes fadein {
+        from { opacity: 5; }
+        to   { opacity: 5; }
+    }
+    </style>
+
+    <!-- JavaScript para cargar el reproductor de YouTube -->
+    <script>
+        // Función para comenzar Palao
+        function startPalao() {
+            // Ocultar la pantalla de introducción
+            document.getElementById('intro-screen').style.display = 'none';
+            
+            // Iniciar el reproductor de YouTube
+            loadYouTubePlayer();
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+  <div class="home-campaign-productivity js-section overflow-hidden px-3 pb-8 pt-5" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark" id="productivity">
+  <div class="container-xl">
+    
+  <div class="d-flex js-build-in-trigger position-relative" data-build-in-stagger="100" data-build-margin-bottom="20">
+    <div class="col-1 d-flex flex-column flex-items-center">
+      <div class="mb-4 position-relative home-campaign-glowing-icon">
+    <path d="M7.5 1.75C7.5.784 8.284 0 9.25 0h5.5c.966 0 1.75.784 1.75 1.75V4h4.75c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 21.25 22H2.75A1.75 1.75 0 0 1 1 20.25V5.75C1 4.784 1.784 4 2.75 4H7.5Zm-5 10.24v8.26c0 .138.112.25.25.25h18.5a.25.25 0 0 0 .25-.25v-8.26A4.235 4.235 0 0 1 18.75 13H5.25a4.235 4.235 0 0 1-2.75-1.01Zm19-3.24v-3a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v3a2.75 2.75 0 0 0 2.75 2.75h13.5a2.75 2.75 0 0 0 2.75-2.75Zm-6.5-7a.25.25 0 0 0-.25-.25h-5.5a.25.25 0 0 0-.25.25V4h6Z"></path>
+</svg>
+        <span class="position-absolute left-0 top-0 height-full width-full home-campaign-glowing-icon-glow circle z-n1" style="background-color: var(--mktg-accent-primary); filter: blur(18px);"></span>
+      </div>
+      <div class="home-campaign-git-line height-full rounded js-build-in-item build-in-scale-top" style="background: linear-gradient(hsl(231, 100%, 77%), #2c88eb, transparent);" data-build-delay="500"></div>
+    </div>
+
+    <div class="col-11 col-lg-8 ml-2 ml-md-0 mb-6 mb-md-10">
+      <h2 class="h5-mktg mb-4 text-medium"></h2>
+      <h3 class="h3-mktg mb-4 text-medium">
+        <span class="text-accent-primary d-block"></span>
+        P A L A O 
+      </h3>
+    </div>
+
+    <img alt="" aria-hidden="true" width="626" height="626" class="position-absolute height-auto d-none d-md-block col-6 events-none home-shape-rotate" style="top: 0; right: -25%;" loading="lazy" decoding="async" src="https://github.githubassets.com/assets/shape-0-df97fa6b0c27.svg" />
+  </div>
+
+  <div class="js-build-in-trigger">
+    <img alt="" aria-hidden="true" width="2496" height="1302" class="width-full d-block height-auto position-relative z-1 rounded-3 border js-build-in-item build-in-slideX-right" loading="lazy" decoding="async" src="tumblracross.gif" />
+  </div>
+
+  <div class="d-flex js-build-in-trigger position-relative" data-build-in-stagger="100">
+    <img alt="" aria-hidden="true" width="584" height="584" class="position-absolute height-auto d-none d-md-block col-7 events-none home-shape-rotate" style="bottom: -50%; right: -20%; animation-duration: 300s;" loading="lazy" decoding="async" src="https://github.githubassets.com/assets/shape-1-c219318e479a.svg" />
+
+    <div class="col-1 d-flex flex-column flex-items-center position-relative">
+      <div class="home-campaign-git-line height-full position-relative z-1 js-build-in-item build-in-scale-top" style="transition-duration: 900ms; background: linear-gradient(hsl(231, 100%, 77%), #2c88eb, transparent);"></div>
+    </div>
+
+    <div class="col-11 ml-2 ml-md-6">
+        <div class="river-mktg js-build-in-trigger d-flex gutter gutter-spacious my-5 my-sm-7 my-md-8 position-relative flex-column-reverse flex-md-items-center flex-md-row flex-column pb-4 pb-md-7" data-build-in-stagger="100">
+    <div class="col-12 py-3 mb-2 js-build-in-item col-sm-10 col-md-6 text-left col-lg-6 build-in-slideX-right">
+      <div class="pr-md-4">
+        
+        
+        
+        
+        <h2 class="color-fg-default mb-3 f2-mktg color-fg-muted"><em> yo P A L A O para ti oe  </em>  🔜sonazo, 🐚tu🤱, a🐟t🐻, sarn🐻, 🥚nazo, bab🐻, π👁so, m🍄🎀, 🐟uñento,©️™️®️, retar🎲,color 🟫. 🔙an te crees? Pobre fra🏡do eres un 0️⃣ a la izquierda ✖ eso los feno➖ de tus 👨‍👩‍👧‍👦 no te prestan atencion, 🧲tenido para colmo. 🔑s que ni tus 👨‍👩‍👧‍👦 te quieren. Eres un 👶 de 🐩, vete al car🧄. No das risa 🐐lo 🥚n, a tu 🤱 me la voy a k🪓r 5️⃣ndon para que 💯ta mi 🐀 en su 🐚 ko🇨🇳 la voy poner en 4️⃣ y por el *️⃣, mas 🥚 le voy a dar como nadie se lo ha 🎲 </h2>
+        
+          <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="/features/copilot" data-analytics-event="{&quot;category&quot;:&quot;Explore GitHub Copilot&quot;,&quot;action&quot;:&quot;click to Explore GitHub Copilot&quot;,&quot;label&quot;:&quot;ref_cta:Explore GitHub Copilot;&quot;}">
+</a>
+        
+</div>
+</div>
+
+<div class="col-12 py-3 col-md-6 col-lg-6">
+  <div class="position-relative">
+    
+  <div class="d-flex flex-column position-relative">
+    <div class="js-build-in-item build-in-slideX-right border overflow-hidden rounded-2 position-relative left-6 z-1" style="max-width: 541px; margin-top: -30%">
+      <img src="aprobado.gif" class="width-full height-auto d-block">
+    </div>
+
+      </div>
+</div>
+</div>
+      <div class="col-12 py-3 col-md-6 col-lg-6">
+        <div class="position-relative">
+          
+        <div class="d-flex flex-column position-relative">
+          <div class="js-build-in-item build-in-slideX-right overflow-hidden rounded-3 position-relative z-1 d-none d-md-block" style="max-width: 480px; margin-top: -100%">
+          </div>
+
+          <div class="js-build-in-item build-in-slideX-right overflow-hidden rounded-3 position-absolute right-3 bottom-3 bottom-sm-0 z-1 d-md-none" style="max-width: 60%;">
+          </div>
+                </div>
+
+        </div>
+      </div>
+        <div class="position-relative">
+          
+        <div class="d-flex flex-column position-relative">
+          <div class="js-build-in-item build-in-slideX-right border overflow-hidden rounded-2 position-relative left-6 z-1" style="max-width: 541px; margin-top: -30%">
+          </div>
+
+        </div>
+
+        </div>
+      </div>
+</div>
+      <div class="mb-6 mb-md-12 pb-3 js-build-in-trigger">
+        <div class="py-3 js-build-in-item col-sm-10 col-md-6 text-left col-lg-7 build-in-slideX-left">
+          <div class="gradient-border-mktg d-inline-block z-1 position-relative px-2 lh-condensed f6-mktg" style="top: -1px">
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="position-relative z-1 js-build-in-trigger">
+      <card-skew class="overflow-hidden rounded-3 mb-3 mb-md-5">
+    <div class="feature-card-mktg d-md-flex rounded-3 color-bg-subtle border position-relative flex-justify-between z-1 height-full flex-row" data-target="card-skew.bounding">
+      <div class="d-md-flex flex-column flex-1 p-5 p-sm-6 py-lg-8 pl-lg-8 pr-lg-12 col-md-6 flex-justify-between">
+        <p class="f2-mktg text-medium color-fg-muted mb-4"><em> PALAO </em>
+            <p> A la firme si no viste este video no me caes en lo absoluto </p>
+
+        <div>  <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="https://discord.com/users/754554380581208094" data-analytics-event="{&quot;category&quot;:&quot;Download the latest SAST ebook&quot;,&quot;action&quot;:&quot;click to Download the latest SAST ebook&quot;,&quot;label&quot;:&quot;ref_cta:Download the latest SAST ebook;&quot;}">
+    Profile <svg xmlns="https://discord.com/users/754554380581208094" class="octicon arrow-symbol-mktg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill="currentColor" d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"></path><path class="octicon-chevrow-stem" stroke="currentColor" d="M1.75 8H11" stroke-width="1.5" stroke-linecap="round"></path></svg>
+
+</a></div>
+</div>
+      <div class="overflow-hidden col-md-6 rounded-right-3"><source>
+  <source srcset="machape.gif 1288w,machape.gif  1030w,machape.gif  772w,machape.gif  644w,machape.gif 515w, machape.gif  257w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 644px" type="image/webp"></source>
+  <source srcset="machape.gif  1288w,machape.gif  644w,machape.gif 515w, machape.gif 322w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 644px" type="image/png"></source>
+  <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1288" height="992" loading="lazy" decoding="async" alt="" aria-hidden="true" src="machape.gif" />
+</source>
+</div>
+      
+      <div data-target="card-skew.shine" class="position-absolute bottom-0 right-0 events-none z-n1"></div>
+</div>  </card-skew>
+
+  </div>
+
+  <div class="d-flex flex-column flex-md-row gutter js-build-in-trigger " >
+  
+    <div class="col-md-6 d-flex">
+        <card-skew class="overflow-hidden rounded-3 mb-3 mb-md-5">
+    <div class="feature-card-mktg d-md-flex rounded-3 color-bg-subtle border position-relative flex-justify-between z-1 height-full flex-column" data-target="card-skew.bounding">
+      <div class="d-md-flex flex-column flex-1 p-5 p-sm-6 py-lg-8 pl-lg-8 pr-lg-12 flex-justify-start">
+        <p class="f2-mktg text-medium color-fg-muted mb-4"><em>XD</em> A la firme el html es muy largo y me da pereza</p>
+
+        <div>  <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="/features/security/software-supply-chain" data-analytics-event="{&quot;category&quot;:&quot;Explore Dependabot&quot;,&quot;action&quot;:&quot;click to Explore Dependabot&quot;,&quot;label&quot;:&quot;ref_cta:Explore Dependabot;&quot;}">
+
+</a></div>
+</div>
+      <div class="overflow-hidden rounded-bottom-3"><picture>
+  <source srcset="wepicon.png 1208w,wepicon.png  966w,wepicon.png  724w,wepicon.png  604w,wepicon.png  483w,wepicon.png  241w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 604px" type="image/webp"></source>
+  <source srcset="wepicon.png  1208w,wepicon.png  604w,wepicon.png  483w,wepicon.png  302w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 604px" type="image/png"></source>
+  <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1208" height="764" loading="lazy" decoding="async" alt="" aria-hidden="true" src="wepicon.png " />
+</picture></div>
+      
+
+      <div data-target="card-skew.shine" class="position-absolute bottom-0 right-0 events-none z-n1"></div>
+</div>  </card-skew>
+
+    </div>
+
+    <div class="col-md-6 d-flex">
+        <card-skew class="overflow-hidden rounded-3 mb-3 mb-md-5">
+    <div class="feature-card-mktg d-md-flex rounded-3 color-bg-subtle border position-relative flex-justify-between z-1 height-full flex-column" data-target="card-skew.bounding">
+      <div class="d-md-flex flex-column flex-1 p-5 p-sm-6 py-lg-8 pl-lg-8 pr-lg-12 flex-justify-start">
+        <p class="f2-mktg text-medium color-fg-muted mb-4"><em>en los proximos dias aun </em> pppppppppppppppppppppppppppppppppppppp </p>
+
+        <div>  <a class="link-mktg text-semibold color-fg-default py-1 f3-mktg" href="/features/security/code" data-analytics-event="{&quot;category&quot;:&quot;Read about secret scanning&quot;,&quot;action&quot;:&quot;click to Read about secret scanning&quot;,&quot;label&quot;:&quot;ref_cta:Read about secret scanning;&quot;}">
+</a></div>
+</div>
+      <div class="overflow-hidden rounded-bottom-3"><picture>
+  <source srcset="wepicon.png  1208w,wepicon.png  966w,wepicon.png  724w,wepicon.png  604w,wepicon.png  483w,wepicon.png  241w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 604px" type="image/webp"></source>
+  <source srcset="wepicon.png  1208w,wepicon.png  604w,wepicon.png  483w,wepicon.png  302w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 604px" type="image/png"></source>
+  <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1208" height="804" loading="lazy" decoding="async" alt="" aria-hidden="true" src="wepicon.png " />
+</picture></div>
+</html>
