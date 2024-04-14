@@ -79,7 +79,18 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_webgl-globe_dist_js_main_js-cf5f119d1214.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/webgl-globe-d3e3295f0ac2.js"></script>
 
-   <style>
+<style>
+  ::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores webkit como Chrome y Safari */
+  }
+
+  body {
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+    -ms-overflow-style: none; /* Oculta la barra de desplazamiento en Internet Explorer y Edge */
+  }
+</style>
+
+<style>
   /* Estilo de la barra de volumen */
   #volume-bar {
       position: fixed;
@@ -101,8 +112,9 @@
   }
 </style>
 
-   <!-- Reproductor de YouTube con API -->
+<!-- Reproductor de YouTube con API -->
       <div id="player"></div>
+      
 
       <!-- Barra de volumen -->
       <div id="volume-bar" onclick="adjustVolume(event)">
@@ -169,6 +181,8 @@
           document.addEventListener('DOMContentLoaded', function() {
               // Iniciar el reproductor de YouTube automáticamente después de que el usuario haya interactuado con la página
               document.getElementById('intro-screen').addEventListener('click', startPalao);
+            // Iniciar el reproductor de YouTube automáticamente en dispositivos móviles al tocar la pantalla
+            document.body.addEventListener('touchstart', startPalao);
           });
       </script>
 
@@ -272,6 +286,11 @@
             loadYouTubePlayer();
         }
 
+
+
+
+
+
     </script>
 </body>
 
@@ -314,8 +333,7 @@
     <img alt="" aria-hidden="true" width="584" height="584" class="position-absolute height-auto d-none d-md-block col-7 events-none home-shape-rotate" style="bottom: -50%; right: -20%; animation-duration: 300s;" loading="lazy" decoding="async" src="https://github.githubassets.com/assets/shape-1-c219318e479a.svg" />
 
     <div class="col-1 d-flex flex-column flex-items-center position-relative">
-      <div class="home-campaign-git-line height-full position-relative z-1 js-build-in-item build-in-scale-top" style="transition-duration: 900ms; background: linear-gradient(transparent, #3FB950, #3FB950, transparent);"></div>
-      <img alt="" aria-hidden="true" width="81" height="485" style="left: calc(50% - 2px); height: auto; max-width: 9vw;" class="d-none d-md-block position-absolute bottom-4 js-build-in-item build-in-scale-fade" loading="lazy" decoding="async" src="https://github.githubassets.com/assets/git-branch-productivity-c304b83d09c7.svg" />
+      <div class="home-campaign-git-line height-full position-relative z-1 js-build-in-item build-in-scale-top" style="transition-duration: 900ms; background: linear-gradient(hsl(231, 100%, 77%), #2c88eb, transparent);"></div>
     </div>
 
     <div class="col-11 ml-2 ml-md-6">
@@ -342,16 +360,11 @@
           </div>
 
           <div class="js-build-in-item build-in-slideX-right overflow-hidden rounded-3 position-absolute right-3 bottom-3 bottom-sm-0 z-1 d-md-none" style="max-width: 60%;">
-            <img src="https://github.githubassets.com/assets/illu-copilot-sidebar-3d2efb504577.png" loading="lazy" width="960" height="1222" alt="" decoding="async" class="width-full d-block height-auto">
           </div>
-
-          <img alt="" aria-hidden="true" width="1000" height="1000" class="position-absolute d-none d-md-block events-none js-build-in-item build-in-fade" style="bottom: -300px; right: -200px;" loading="lazy" decoding="async" src="https://github.githubassets.com/assets/bg-glow-purple-6e9a6a96cb04.png" />
-        </div>
+                </div>
 
         </div>
       </div>
-
-       *
         <div class="position-relative">
           
         <div class="d-flex flex-column position-relative">
@@ -436,5 +449,3 @@
   <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1208" height="804" loading="lazy" decoding="async" alt="" aria-hidden="true" src="wepicon.png " />
 </picture></div>
 </html>
-
-----13/04/2024
