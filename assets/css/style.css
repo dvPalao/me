@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+    zoom: 10%;
+}
+
 .profile-container {
   display: flex;
   justify-content: flex-end;
