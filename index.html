@@ -12,6 +12,7 @@
 
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="wepicon.png">
   <link rel="dns-prefetch" href="https://github.githubassets.com">
   <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
@@ -77,7 +78,30 @@
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/home-5523b374aaa9.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_webgl-globe_dist_js_main_js-cf5f119d1214.js"></script>
 <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/webgl-globe-d3e3295f0ac2.js"></script>
-      <!-- Reproductor de YouTube con API -->
+
+   <style>
+  /* Estilo de la barra de volumen */
+  #volume-bar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: 5px;
+      background-color: #d3d3d3;
+      border-radius: 2.5px;
+      cursor: pointer;
+  }
+
+  #volume-fill {
+      height: 100%;
+      background-color: #4CAF50;
+      border-radius: 2.5px;
+      width: 100%; /* Inicialmente llena toda la barra */
+      transition: width 0.2s; /* Transición suave al cambiar el volumen */
+  }
+</style>
+
+   <!-- Reproductor de YouTube con API -->
       <div id="player"></div>
 
       <!-- Barra de volumen -->
@@ -411,7 +435,6 @@
   <source srcset="wepicon.png  1208w,wepicon.png  604w,wepicon.png  483w,wepicon.png  302w" sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 604px" type="image/png"></source>
   <img class="width-full d-block height-auto js-build-in-item build-in-scale-fade" width="1208" height="804" loading="lazy" decoding="async" alt="" aria-hidden="true" src="wepicon.png " />
 </picture></div>
-
----- 13/04/25
-
 </html>
+
+----13/04/2024
