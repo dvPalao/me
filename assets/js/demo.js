@@ -11,22 +11,6 @@ const randomHexColor = () => {
   return "#" + Math.floor(Math.random() * 16777215).toString(16);
 };
 
-// Función para comenzar Palao
-function startPalao() {
-  // Ocultar la pantalla de introducción
-  document.getElementById('intro-screen').style.display = 'none';
-  
-  // Cambiar el tamaño y mostrar el contenedor del reproductor de YouTube
-  var playerContainer = document.getElementById('player-container');
-  playerContainer.style.width = '300px'; // Cambia el tamaño según sea necesario
-  playerContainer.style.height = '200px';
-  playerContainer.style.display = 'block';
-  
-  // Iniciar el reproductor de YouTube
-  loadYouTubePlayer();
-}
-
-
 const ramdomWord = () => {
   const words = [
     "Awesome",
