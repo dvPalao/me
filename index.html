@@ -91,15 +91,6 @@
 </style>
 
 <style>
-       #player {
-            display: none; /* Ocultar inicialmente el reproductor */
-            position: fixed;
-            bottom: 20px; /* Ajustar posición vertical */
-            left: 20px; /* Ajustar posición horizontal */
-            width: 300px; /* Ajustar ancho del reproductor */
-            height: 200px; /* Ajustar altura del reproductor */
-            transition: opacity 0.5s; /* Animación de opacidad */
-        }
   #volume-bar {
       position: fixed;
       top: 20px;
@@ -121,7 +112,7 @@
 </style>
 
 
-      <div id="player-container" style="width: 0; height: 0; display: none;"></div>
+      <div id="player"></div>
       
 
       <div id="volume-bar" onclick="adjustVolume(event)">
