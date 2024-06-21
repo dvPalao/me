@@ -50,7 +50,7 @@ body {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgb(0, 0, 0);
+      background-color: rgb(29, 29, 29);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -301,6 +301,8 @@ a:hover span:nth-child(4)
   transition-delay: 0.75s;
 }
 
+
+
 #background-video {
   position: fixed;
   top: 0;
@@ -310,6 +312,8 @@ a:hover span:nth-child(4)
   object-fit: cover;
   z-index: -1; /* Make sure it's behind other elements */
 }
+
+
 
   </style>
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -376,10 +380,12 @@ a:hover span:nth-child(4)
 
   <script>
     var button = document.getElementById('myButton');
-    var texts = ['   ....    ', ' ....    ', ' ....    ', ' ....   '];
+    var texts = ['   Insert Coin    ','   Inserta una moneda por si no sabes ingles wano    ','   ....    ','   wixi wixi araña tejio su telaraña    ', ' no me acuerdo q mas era  ','   firme loco si no le das click te mando a bucle    '];
     var index = 0;
     var counter = texts[index].length;
     var intervalId;
+
+    <iframe id="player" width="0" height="0" frameborder="0" allowfullscreen playsinline></iframe>
 
     function deleteText() {
       if (counter >= 0) {
@@ -410,6 +416,7 @@ a:hover span:nth-child(4)
       document.getElementById('intro-screen').style.display = 'none';
       loadYouTubePlayer();
     }
+    
 
     function adjustVolume(event) {
       var volumeBar = document.getElementById('volume-bar');
@@ -438,7 +445,7 @@ a:hover span:nth-child(4)
           'autoplay': 1, 
           'controls': 1, 
           'loop': 1, 
-          'mute': 0, 
+          'mute': false, 
           'volume': 100 
         },
         events: {
