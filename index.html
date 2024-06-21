@@ -25,25 +25,6 @@ body {
       -ms-overflow-style: none;
     }
 
-    #volume-bar {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: 5px;
-      background-color: #d3d3d3;
-      border-radius: 2.5px;
-      cursor: pointer;
-    }
-
-    #volume-fill {
-      height: 100%;
-      background-color: #4CAF50;
-      border-radius: 2.5px;
-      width: 100%; 
-      transition: width 0.2s; 
-    }
-
     #intro-screen {
       position: fixed;
       top: 0;
@@ -411,15 +392,6 @@ a:hover span:nth-child(4)
       loadYouTubePlayer();
     }
 
-    function adjustVolume(event) {
-      var volumeBar = document.getElementById('volume-bar');
-      var volumeFill = document.getElementById('volume-fill');
-      var volumeLevel = (event.clientX - volumeBar.getBoundingClientRect().left) / volumeBar.offsetWidth;
-      volumeFill.style.width = (volumeLevel * 100) + '%';
-      var player = document.getElementById('player');
-      player.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[' + (volumeLevel * 100) + ']}', '*');
-    }
-
     function loadYouTubePlayer() {
       var tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
@@ -428,22 +400,21 @@ a:hover span:nth-child(4)
     }
 
     function onYouTubeIframeAPIReady() {
-      var player;
-      player = new YT.Player('player', {
-        height: '0', 
-        width: '0', 
-        playerVars: {
-          'listType': 'playlist',
-          'list': 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N',
-          'autoplay': 1, 
-          'controls': 1, 
-          'loop': 1, 
-          'mute': false, 
-          'volume': 100 
-        },
-        events: {
+  var player;
+  player = new YT.Player('player', {
+    height: '0', 
+    width: '0', 
+    playerVars: {
+      'listType': 'playlist',
+      'list': 'PLfh9fIM1oARRqjKdWkZ0vhe0_8MwxDJ1N',
+      'autoplay': 1, 
+      'controls': 1, 
+      'loop': 1, 
+      'ute': false
+    },
+    events: {
       'onReady': function(event) {
-        // Add this line to wait for user interaction before playing
+        event.target.setVolume(10); // Establecemos el volumen en 40%
         document.addEventListener('touchstart', function() {
           event.target.playVideo();
         }, { once: true });
