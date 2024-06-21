@@ -442,11 +442,15 @@ a:hover span:nth-child(4)
           'volume': 100 
         },
         events: {
-          'onReady': onPlayerReady
-        }
-      });
+      'onReady': function(event) {
+        // Add this line to wait for user interaction before playing
+        document.addEventListener('touchstart', function() {
+          event.target.playVideo();
+        }, { once: true });
+      }
     }
-
+  });
+}
     function onPlayerReady(event) {
       event.target.playVideo();
       document.getElementById('player').style.display = 'none'; 
@@ -457,7 +461,6 @@ a:hover span:nth-child(4)
       document.body.addEventListener('touchstart', startPalao);
     });
 
-    <iframe id="player" width="0" height="0" frameborder="0" allowfullscreen playsinline></iframe>
 
   </script>
 </body>
