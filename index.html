@@ -393,44 +393,35 @@ a:hover span:nth-child(4)
 
   <script>
     var button = document.getElementById('myButton');
-    var texts = ['   ....    ', ' ....    ', ' ....    ', ' ....   '];
+    var texts = ['𝐍𝐨𝐰 𝐥𝐨𝐚𝐝𝐢𝐧𝐠...', '𝐍𝐨𝐰 𝐥𝐨𝐚𝐝𝐢𝐧𝐠....','𝐍𝐨𝐰 𝐥𝐨𝐚𝐝𝐢𝐧𝐠.....', '𝐍𝐨𝐰 𝐥𝐨𝐚𝐝𝐢𝐧𝐠....'];
     var index = 0;
-    var counter = texts[index].length;
-    var intervalId;
 
-    function deleteText() {
-      if (counter >= 0) {
-        button.innerHTML = texts[index].slice(0, counter);
-        counter--;
-      } else {
-        clearInterval(intervalId);
+    function updateText() {
+        button.innerHTML = texts[index];
         index = (index + 1) % texts.length;
-        counter = 0;
-        intervalId = setInterval(addText, 100); 
-      }
     }
 
-    function addText() {
-      if (counter < texts[index].length) {
-        button.innerHTML += texts[index][counter];
-        counter++;
-      } else {
-        clearInterval(intervalId);
-        counter = texts[index].length;
-        intervalId = setInterval(deleteText, 100); 
-      }
-    }
+    var intervalId = setInterval(updateText, 400);
 
-    intervalId = setInterval(deleteText, 100); 
 
-    function startPalao() {
+  function startPalao() {
     document.getElementById('intro-screen').style.display = 'none';
-    var audio = document.getElementById('background-audio');
-    audio.volume = 0.1;
-    audio.play();
+
+   var audio1 = document.getElementById('background-audio');
+   audio1.volume = 0.1;
+   audio1.play();
 }
   
-    
+    function autoStartPalao() {
+  setTimeout(startPalao, 8000); 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('intro-screen').addEventListener('click', startPalao);
+  document.body.addEventListener('touchstart', startPalao);
+  autoStartPalao(); 
+});
+
     function onPlayerReady(event) {
       event.target.playVideo();
       document.getElementById('player').style.display = 'none'; 
