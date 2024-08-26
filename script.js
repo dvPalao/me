@@ -8,7 +8,6 @@ const home = document.querySelector('.home');
 
 document.addEventListener('scroll', function() {
     let value = window.scrollY
-    // console.log(value)
     title.style.marginTop = value * 1.1 + 'px'
 
     leaf1.style.marginLeft = -value + 'px'
@@ -19,6 +18,7 @@ document.addEventListener('scroll', function() {
     mount1.style.marginBottom = -value * 1.1 + 'px'
     mount2.style.marginBottom = -value * 1.2 + 'px'
 })
+
 
 window.addEventListener('beforeunload', function() {
     window.scrollTo(0, 0);
@@ -41,3 +41,20 @@ window.addEventListener('beforeunload', function() {
       e.preventDefault();
     }
   });
+
+  const parallax = document.querySelector('.parallax');
+const images = parallax.querySelectorAll('img');
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  images.forEach((image, index) => {
+    const speed = 0.5 + (index * 0.1);
+    const offset = scrollPosition * speed;
+    image.style.transform = `translateY(${offset}px) scale(${1 + (offset / 100)})`;
+  });
+});
+
+// Agrega un evento de touchstart para el botón de scroll down
+document.querySelector('.scroll-down-button').addEventListener('touchstart', function() {
+  // Acción al tocar el botón
+});
