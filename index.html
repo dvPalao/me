@@ -3,14 +3,10 @@
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@jthnlp</title>
-    <link rel="icon" type="image/png" href="iconwe.png">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -182,27 +178,35 @@ window.addEventListener('scroll', () => {
       </section>
 
 <!-- MUSICA -->
-        <audio id="background-audio" src="audio1.mp3"></audio>
-        <audio id="music1" src="audio2.mp3"></audio>
-        <audio id="music2" src="untitled.mp3"></audio>
+        <audio id="background-audio" src="audio.mp3"></audio>
+        <audio id="music1" src="audio1.mp3"></audio>
+        <audio id="music2" src="audio2.mp3"></audio>
+        <audio id="music3" src="untitled.mp3"></audio>
         
 <script>
 
         function startPalao() {
           document.getElementById('intro-screen').style.display = 'none';
       
-         var audio1 = document.getElementById('background-audio');
-         var audio2 = document.getElementById('music1');
+         var audio = document.getElementById('background-audio');
+         var audio1 = document.getElementById('music1');
+         var audio2 = document.getElementById('music2');
          var audio3 = document.getElementById('music2');
-      
+
+
+         audio.volume = 0.3;
          audio1.volume = 0.3;
          audio2.volume = 0.3;
          audio3.volume = 0.3;
       
       
-         audio1.play();
+         audio.play();
         
-         audio1.addEventListener('ended', function() {
+         audio.addEventListener('ended', function() {
+          audio1.play();
+        });
+
+        audio1.addEventListener('ended', function() {
           audio2.play();
         });
       
