@@ -102,14 +102,6 @@ window.addEventListener('scroll', () => {
       </head>
       
       <body>
-        <div id="intro-screen" style="animation: fadein 55s;">
-          <button id="myButton" onclick="startPalao()" style="background-color: #00000000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;"></button>
-        </div>
-      
-        <div id="player"></div>
-        <div id="volume-bar" onclick="adjustVolume(event)">
-          <div id="volume-fill"></div>
-        </div>
       
       
         <div class="card">
@@ -190,17 +182,20 @@ window.addEventListener('scroll', () => {
         <audio id="myAudio">
           <source src="audio.mp3" type="audio/mp3">
         </audio>
+
+        
         
         <script>
           var audio = document.getElementById("myAudio");
-          audio.play();
+          setTimeout(function() {
+            audio.play();
+          }, 1); // retardo de 100ms
         </script>
 
 <script>
 
 
   function startPalao() {
-    document.getElementById('intro-screen').style.display = 'none';
 
    var audio1 = document.getElementById('background-audio');
    var audio2 = document.getElementById('music1');
@@ -222,10 +217,7 @@ window.addEventListener('scroll', () => {
   });
 }
 
-function autoStartPalao() {
-  setTimeout(startPalao, 1); 
-  setTimeout(onPlayerReady, 1)
-}
+
 
 
 </script>
