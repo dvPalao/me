@@ -65,6 +65,7 @@
   <span></span>
 </div>
 
+
 <script>
   const boton = document.querySelector('.scroll-down-button');
   const seccionDestino = document.querySelector('#Profile');
@@ -185,6 +186,16 @@ window.addEventListener('scroll', () => {
         <audio id="music2" src="audio2.mp3" ></audio>
         <audio id="music3" src="untitled.mp3" ></audio>
         
+
+        <audio id="myAudio">
+          <source src="audio.mp3" type="audio/mp3">
+        </audio>
+        
+        <script>
+          var audio = document.getElementById("myAudio");
+          audio.play();
+        </script>
+
 <script>
 
 const audio = new Audio('audio/100-grandkids-sample.wav');
