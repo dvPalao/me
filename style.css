@@ -126,7 +126,8 @@ body {
       transform: translateX(0);
     }
     50% {
-      transform: translateX(5px); 
+      transform: translateX(1px); 
+      transform: translateY(1px); 
     }
     100% {
       transform: translateX(0);
@@ -143,7 +144,7 @@ body {
     }
     50% {
       transform: translateX(1px); 
-      transform: translateY(-2px); 
+      transform: translateY(1px); 
     }
     100% {
       transform: translateX(0);
