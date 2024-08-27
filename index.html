@@ -187,6 +187,13 @@ window.addEventListener('scroll', () => {
         
 <script>
 
+  window.addEventListener('load', function() {
+  startPalao();
+});
+
+const audio = new Audio('audio.mp3');
+audio.play();
+
         function startPalao() {
           document.getElementById('intro-screen').style.display = 'none';
       
@@ -201,7 +208,6 @@ window.addEventListener('scroll', () => {
          audio2.volume = 0.3;
          audio3.volume = 0.3;
 
-        window.addEventListener('load', startPalao);
 
       
          audio.play();
