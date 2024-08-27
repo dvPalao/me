@@ -222,7 +222,14 @@ window.addEventListener('scroll', () => {
           audio3.play();
         });
       }
-
+         audio3.addEventListener('ended', function() {
+          audio4.play();
+        });
+      }
+         audio4.addEventListener('ended', function() {
+          audio1.play();
+        });
+      }
         </script>
 <!-- MUSICA -->
 </body>
