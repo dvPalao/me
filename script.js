@@ -54,7 +54,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Agrega un evento de touchstart para el botón de scroll down
-document.querySelector('.scroll-down-button').addEventListener('touchstart', function() {
-  // Acción al tocar el botón
-});
+const audio = new Audio('audio/ 100-grandkids-sample.wav');
+audio.play();
+
