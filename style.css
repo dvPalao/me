@@ -14,19 +14,6 @@
   z-index: 9999;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 body {
     user-select: none; 
     -webkit-user-select: none; 
@@ -99,7 +86,7 @@ body {
   }
 
 .leaf1 {
-    animation: float 4s infinite;
+    animation: float 2.1s infinite;
   }
   
   @keyframes float {
@@ -115,7 +102,7 @@ body {
   }
 
   .leaf2 {
-    animation: float 3s infinite;
+    animation: float 2.9s infinite;
   }
   
   @keyframes float {
@@ -131,22 +118,6 @@ body {
   }
 
   .bush1 {
-    animation: sway 3s infinite;
-  }
-  
-  @keyframes sway {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(10px); 
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-
-  .bush1 {
     animation: sway 4s infinite;
   }
   
@@ -155,7 +126,25 @@ body {
       transform: translateX(0);
     }
     50% {
-      transform: translateX(10px); 
+      transform: translateX(5px); 
+      transform: translateY(-2px); 
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .bush2 {
+    animation: sway 3s infinite;
+  }
+  
+  @keyframes sway {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(1px); 
+      transform: translateY(-2px); 
     }
     100% {
       transform: translateX(0);
