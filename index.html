@@ -13,7 +13,7 @@
 
 <body>
 
-  
+
     <section class="home">
 
         <img src="assets/mount2.png" class="mount2">
@@ -65,21 +65,40 @@
   <span></span>
 </div>
 
-
 <script>
-  const boton = document.querySelector('.scroll-down-button');
-  const seccionDestino = document.querySelector('#Profile');
 
-  boton.addEventListener('click', () => {
-    const posicionActual = window.scrollY;
-    const pixelesABajar = 1050;
-    const nuevaPosicion = posicionActual + pixelesABajar;
-    const duration = 500; 
-    window.scrollTo({
-      top: nuevaPosicion,
-      behavior: 'smooth'
-    });
-  });
+const boton = document.querySelector('.scroll-down-button');
+const seccionDestino = document.querySelector('#Profile');
+
+boton.addEventListener('click', () => {
+  const posicionActual = window.scrollY;
+  const pixelesABajar = 1050;
+  const nuevaPosicion = posicionActual + pixelesABajar;
+  const duration = 2000;
+
+  const startTime = performance.now();
+
+  function animateScroll() {
+    const elapsedTime = performance.now() - startTime;
+    const progress = elapsedTime / duration;
+
+    if (progress < 1) {
+      const nextScrollPosition = posicionActual + (pixelesABajar * progress);
+      window.scrollTo({
+        top: nextScrollPosition,
+        behavior: 'auto'
+      });
+      requestAnimationFrame(animateScroll);
+    } else {
+      window.scrollTo({
+        top: nuevaPosicion,
+        behavior: 'auto'
+      });
+    }
+  }
+
+  animateScroll();
+});
 
 window.addEventListener('scroll', () => {
   const posicionActual = window.scrollY;
