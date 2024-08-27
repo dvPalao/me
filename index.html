@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta name="robots" content="noindex, nofollow">
-    <title>@Jthnlp</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <link rel="icon" type="image/png" href="iconwe.png">
 <meta http-equiv="Pragma" content="no-cache">
@@ -180,19 +179,12 @@ window.addEventListener('scroll', () => {
       </section>
 
 <!-- MUSICA -->
-        <audio id="background-audio" src="audio.mp3"autoplay muted></audio>
-        <audio id="music1" src="audio1.mp3"autoplay muted></audio>
-        <audio id="music2" src="audio2.mp3"autoplay muted></audio>
-        <audio id="music3" src="untitled.mp3"autoplay muted></audio>
+        <audio id="background-audio" src="audio.mp3"autoplay ></audio>
+        <audio id="music1" src="audio1.mp3" ></audio>
+        <audio id="music2" src="audio2.mp3" ></audio>
+        <audio id="music3" src="untitled.mp3" ></audio>
         
 <script>
-
-  window.addEventListener('load', function() {
-  startPalao();
-});
-
-const audio = new Audio('audio.mp3');
-audio.play();
 
         function startPalao() {
           document.getElementById('intro-screen').style.display = 'none';
@@ -207,9 +199,8 @@ audio.play();
          audio1.volume = 0.3;
          audio2.volume = 0.3;
          audio3.volume = 0.3;
-
-
       
+
          audio.play();
         
          audio.addEventListener('ended', function() {
