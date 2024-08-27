@@ -3,7 +3,7 @@
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>@jthnlp</title>
+  <title>@jthnlp</title>
   <link rel="icon" type="image/png" href="iconwe.png">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -65,6 +65,7 @@
   <span></span>
 </div>
 
+
 <script>
   const boton = document.querySelector('.scroll-down-button');
   const seccionDestino = document.querySelector('#Profile');
@@ -102,7 +103,8 @@ window.addEventListener('scroll', () => {
       
       <body>
         <div id="intro-screen" style="animation: fadein 55s;">
-          <button id="myButton" onclick="startPalao()" style="background-color: #00000000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;"></button>
+          <h1></h1>
+          <button id="myButton" onclick="startPalao()" style="background-color: #00000000; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">𝗜𝗻𝗶𝗰𝗶𝗮𝗿</button>
         </div>
       
         <div id="player"></div>
@@ -184,54 +186,44 @@ window.addEventListener('scroll', () => {
         <audio id="music1" src="audio1.mp3"></audio>
         <audio id="music2" src="audio2.mp3"></audio>
         <audio id="music3" src="untitled.mp3"></audio>
-        
-<script>
 
+
+        <script>
+
+      
+          function updateText() {
+              button.innerHTML = texts[index];
+              index = (index + 1) % texts.length;
+          }
+      
+          var intervalId = setInterval(updateText, 400);
+      
+      
         function startPalao() {
           document.getElementById('intro-screen').style.display = 'none';
       
-         var audio = document.getElementById('background-audio');
-         var audio1 = document.getElementById('music1');
-         var audio2 = document.getElementById('music2');
+         var audio1 = document.getElementById('background-audio');
+         var audio2 = document.getElementById('music1');
          var audio3 = document.getElementById('music2');
-
-
-         audio.volume = 0.3;
-         audio1.volume = 0.3;
-         audio2.volume = 0.3;
-         audio3.volume = 0.3;
+         var audio4 = document.getElementById('music3');
       
+         audio1.volume = 0.5;
+         audio2.volume = 0.5;
+         audio3.volume = 0.5;
+         audio4.volume = 0.5;
       
-         audio.play();
+         audio1.play();
         
-         audio.addEventListener('ended', function() {
-          audio1.play();
-        });
-
-        audio1.addEventListener('ended', function() {
+         audio1.addEventListener('ended', function() {
           audio2.play();
         });
       
          audio2.addEventListener('ended', function() {
           audio3.play();
         });
+      }
 
-        audio3.addEventListener('ended', function() {
-          audio1.play();
-        });
-      }
-      
-      function autoStartPalao() {
-        setTimeout(startPalao, 1); 
-        setTimeout(onPlayerReady, 1)
-      }
-      
-      document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('intro-screen').addEventListener('click', startPalao);
-        document.body.addEventListener('touchstart', startPalao);
-        autoStartPalao(); 
-      });
-</script>
+        </script>
 <!-- MUSICA -->
 </body>
 </html>
