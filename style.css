@@ -1,43 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* Estilos para dispositivos móviles */
-@media only screen and (max-width: 768px) {
-  /* Ajusta los estilos aquí */
-  .card {
-    width: 90%; /* Ajusta el ancho de la tarjeta */
-    height: auto; /* Ajusta la altura de la tarjeta */
-  }
-  .img8x {
-    width: 100%; /* Ajusta el ancho de la imagen */
-    height: auto; /* Ajusta la altura de la imagen */
-  }
-  /* Ajusta otros estilos según sea necesario */
-}
 
-.scroll-down-button {
-  touch-action: manipulation; /* Permite la interacción táctil */
-}
-
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-.scroll-down-button {
-  animation: bounce 2s infinite; /* Ajusta la velocidad de animación */
-}
 
 body {
     user-select: none; 
     -webkit-user-select: none; 
     -moz-user-select: none; 
     -ms-user-select: none; 
+    touch-action: none
+
   }
 
   .no-select {
@@ -295,10 +266,6 @@ header nav:hover > a:not(:hover) {
             transition: 0.5s;
           }
       
-          .card:hover
-          {
-            height: 700px;
-          }
       
           .img8x
           {
@@ -313,13 +280,7 @@ header nav:hover > a:not(:hover) {
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0,35);
             overflow: hidden;
           }
-      
-          .card:hover .img8x
-      
-          {
-            width: 650px;
-            height: 300px;
-          }
+
       
           .img8x img
           {
