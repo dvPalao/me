@@ -16,7 +16,7 @@ numberButtons.forEach(button => {
                 window.location.href = 'palao.html';
             } else {
                 incorrectAttempts++;
-                alert('Contraseña incorrecta, Que dia es hoy?');
+                alert('Contraseña incorrecta');
                 if (incorrectAttempts >= 5) {
                     passwordDisplay.textContent = ''; 
                     password = '';
