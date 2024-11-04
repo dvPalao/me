@@ -1,9 +1,10 @@
+
 *{
     margin: 0;
     padding: 0;
 }
 body {
-  background-color: #222;
+  background-color: #1a0917;
   margin: 0; 
   padding: 0; 
   box-sizing: border-box;
@@ -42,7 +43,7 @@ body {
 }
 
   .one{
-    background-color: #222;
+    background-color: #1a0917;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -54,7 +55,7 @@ body {
   }
 
   .background{
-    background-color: #222;
+    background-color: #1a0917;
     height: 100vh;
     width: 100%;
     position: relative;
@@ -70,7 +71,7 @@ body {
   }
   
   .container {
-    background-color: #222;
+    background-color: #1a0917;
     height: 100%;
     width: 100%;
     top: 1.5rem;
@@ -286,3 +287,61 @@ body {
     background-color: rgb(190, 190, 190);
     transition-duration: .5s;
   }
+
+
+.imagenes{
+  width: 300%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen-box{
+  width: 100px;
+  height: 500px;
+  margin: 10px;
+  border-radius: 25px;
+  background: url(icons/palao1.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: width 0.5s;
+}
+
+.imagen-box:nth-child(2){
+  background: url(icons/palao2.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.imagen-box:nth-child(3){
+  background: url(icons/palao3.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.imagen-box:nth-child(4){
+  background: url(icons/palao4.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.imagen-box h3{
+  color: #ffff;
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  opacity: 0;
+}
+
+.imagen-box:hover{
+  width: 500px;
+  cursor: pointer;
+}
